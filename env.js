@@ -1,10 +1,10 @@
 module.exports = {
-  dev: {
+  development: {
     MODE: 'development',
-    ENV_API: 'http://xxxxxxxx:8000', // 测试服务器地址
+    baseUrl: 'http://localhost:4200', // 测试服务器地址
   },
-  pro: {
+  production: {
     MODE: 'production',
-    ENV_API: 'https://xxxxxxxxx', // 正式服务器地址
+    baseUrl: 'https://xxxxxxxxx', // 正式服务器地址
   },
 };

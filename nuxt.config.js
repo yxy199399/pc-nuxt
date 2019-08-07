@@ -18,7 +18,7 @@ module.exports = {
     link: [{rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}],
   },
   env: {
-    baseUrl: env[process.env.MODE].ENV_API,
+    baseUrl: env[process.env.NODE_ENV].baseUrl,
   },
   /*
    ** Customize the progress-bar color
@@ -27,11 +27,11 @@ module.exports = {
   /*
    ** Global CSS
    */
-  css: ['element-ui/lib/theme-chalk/index.css'],
+  css: ['element-ui/lib/theme-chalk/index.css', '@/assets/css/mian.scss'],
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['@/plugins/element-ui'],
+  plugins: ['@/plugins/element-ui', '@/plugins/comment', '~/plugins/route'],
   /*
    ** Nuxt.js dev-modules
    */
@@ -39,19 +39,49 @@ module.exports = {
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
   ],
+
+  /*
+   ** Nuxt.js router重定向
+   */
+  router: {
+    routeNameSplitter: '/',
+    extendRoutes (routes) {
+      routes.unshift (
+        {path: '/login', redirect: '/login/login'},
+        {path: '/mian', redirect: '/mian/home'},
+        {path: '*', redirect: '/mian/home'},
+        {path: '/', redirect: '/mian/home'}
+      );
+    },
+    linkActiveClass: 'active-link',
+    mode: 'history',
+  },
+
   /*
    ** Nuxt.js modules
    */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/proxy',
     '@nuxtjs/pwa',
   ],
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    proxy: true,
+  },
+  proxy: {
+    '/api': {
+      target: 'http://localhost:4200',
+      changeOrigin: true,
+      pathRewrite: {
+        '^/api': '/',
+      },
+    },
+  },
   /*
    ** Build configuration
    */
