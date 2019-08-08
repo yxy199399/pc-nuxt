@@ -1,3 +1,4 @@
+const {resolve} = require ('path');
 const env = require ('./env');
 module.exports = {
   mode: 'universal',
@@ -31,7 +32,12 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['@/plugins/element-ui', '@/plugins/comment', '~/plugins/route'],
+  plugins: [
+    '@/plugins/element-ui',
+    '@/plugins/comment',
+    '~/plugins/route',
+    '~/plugins/icon',
+  ],
   /*
    ** Nuxt.js dev-modules
    */
@@ -55,6 +61,7 @@ module.exports = {
     },
     linkActiveClass: 'active-link',
     mode: 'history',
+    middleware: 'auth',
   },
 
   /*
@@ -75,7 +82,7 @@ module.exports = {
   },
   proxy: {
     '/api': {
-      target: 'http://localhost:4200',
+      target: env[process.env.NODE_ENV].baseUrl,
       changeOrigin: true,
       pathRewrite: {
         '^/api': '/',
@@ -90,6 +97,19 @@ module.exports = {
     /*
      ** You can extend webpack config here
      */
-    extend (config, ctx) {},
+    extend (config, ctx) {
+      const svgRule = config.module.rules.find (rule =>
+        rule.test.test ('.svg')
+      );
+      svgRule.exclude = [resolve (__dirname, './assets/icons/svg')];
+      config.module.rules.push ({
+        test: /\.svg$/,
+        include: [resolve (__dirname, './assets/icons/svg')],
+        loader: 'svg-sprite-loader',
+        options: {
+          symbolId: '[name]',
+        },
+      });
+    },
   },
 };

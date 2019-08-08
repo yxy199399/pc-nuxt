@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_article_selected</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#00F2FE" offset="0%"></stop>
+            <stop stop-color="#1A94FF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="100%" y1="100%" x2="0%" y2="0%" id="linearGradient-2">
+            <stop stop-color="#00F2FE" offset="0%"></stop>
+            <stop stop-color="#1A94FF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="62.1930242%" y1="100%" x2="62.1930242%" y2="0%" id="linearGradient-3">
+            <stop stop-color="#00F2FE" offset="0%"></stop>
+            <stop stop-color="#1A94FF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="酷耍web站2.0视觉规范" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="酷耍web站2.0_视觉规范" transform="translate(-298.000000, -2618.000000)">
+            <g id="icon_20px" transform="translate(22.000000, 2588.000000)">
+                <g id="icon_article" transform="translate(276.000000, 30.000000)">
+                    <rect id="Rectangle-11-Copy" fill="#FFFFFF" opacity="0" x="0" y="0" width="20" height="20"></rect>
+                    <path d="M3,3 L17,3 L17,18 L3,18 L3,3 Z" id="Combined-Shape-Copy" fill="url(#linearGradient-1)"></path>
+                    <path d="M3,3 L17,3 L17,18 L3,18 L3,3 Z" id="Combined-Shape" fill="url(#linearGradient-2)"></path>
+                    <rect id="Rectangle-11" fill="#FFFFFF" x="5" y="6" width="10" height="5"></rect>
+                    <rect id="Rectangle-11-Copy-3" fill="#FFFFFF" opacity="0.800000012" x="5" y="15" width="10" height="1"></rect>
+                    <rect id="Rectangle-11-Copy-4" fill="#FFFFFF" opacity="0.800000012" x="5" y="12" width="10" height="2"></rect>
+                    <rect id="Rectangle-7-Copy" fill="url(#linearGradient-3)" x="6" y="2" width="8" height="2"></rect>
+                </g>
+                <g id="切图框" transform="translate(40.000000, 0.000000)"></g>
+            </g>
+        </g>
+    </g>
+</svg>

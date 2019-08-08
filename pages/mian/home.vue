@@ -4,6 +4,10 @@
     <p>{{username}}</p>
     <button @click="changeName">修改</button>
     <button @click="getNewName">切换</button>
+    <icon-svg icon-class="icon_edit" />
+    <svg class="svg-icon" aria-hidden="true">
+      <use xlink:href="#icon_user_selected" />
+    </svg>
   </div>
 </template>
 <script>
@@ -13,6 +17,11 @@ export default {
     return {
       username: this.$store.state.userInfo.name
     }
+  },
+  mounted() {
+    this.$axios.get('data').then((res) => {
+      console.log(res)
+    })
   },
   methods: {
     ...mapMutations({
