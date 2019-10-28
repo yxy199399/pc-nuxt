@@ -1,5 +1,6 @@
 <template>
   <div>
+    这是默认布局
     <nuxt />
   </div>
 </template>

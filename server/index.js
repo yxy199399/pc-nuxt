@@ -13,7 +13,7 @@ async function start () {
   const nuxt = new Nuxt (config);
 
   const {host, port} = nuxt.options.server;
-  console.log (process.env.baseUrl);
+  // console.log (process.env.baseUrl);
 
   // Build only in dev mode
   if (config.dev) {

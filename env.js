@@ -5,6 +5,6 @@ module.exports = {
   },
   production: {
     MODE: 'production',
-    baseUrl: 'https://xxxxxxxxx', // 正式服务器地址
+    baseUrl: 'http://localhost:4200', // 正式服务器地址
   },
 };

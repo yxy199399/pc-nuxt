@@ -18,9 +18,7 @@ module.exports = {
     ],
     link: [{rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}],
   },
-  env: {
-    baseUrl: env[process.env.NODE_ENV].baseUrl,
-  },
+  env: env[process.env.NODE_ENV],
   /*
    ** Customize the progress-bar color
    */
@@ -53,10 +51,8 @@ module.exports = {
     routeNameSplitter: '/',
     extendRoutes (routes) {
       routes.unshift (
-        {path: '/login', redirect: '/login/login'},
-        {path: '/mian', redirect: '/mian/home'},
-        {path: '*', redirect: '/mian/home'},
-        {path: '/', redirect: '/mian/home'}
+        {path: '*', redirect: '/main'},
+        {path: '/', redirect: '/main'}
       );
     },
     linkActiveClass: 'active-link',
@@ -82,7 +78,7 @@ module.exports = {
   },
   proxy: {
     '/api': {
-      target: env[process.env.NODE_ENV].baseUrl,
+      target: 'http://localhost:4200',
       changeOrigin: true,
       pathRewrite: {
         '^/api': '/',

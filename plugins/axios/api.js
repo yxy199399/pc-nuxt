@@ -1,48 +1,49 @@
-import _axios from './request';
+import axios from 'axios'
+import qs from 'qs'
+const ax = axios.create({
+  baseURL: process.env.baseUrl
+})
+ax.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 
-const APIMAP = {
-  data: '/data',
-};
+// 请求拦截
+ax.interceptors.request.use(
+  config => {
+    if (config.method === 'post') {
+      config.data = qs.stringify(config.data)
+    }
+    console.log('发起数据请求了', config)
+    return config
+  },
+  err => {
+    console.log(err)
+  }
+)
 
-// 配置axios
-const initApiConfig = key => {
-  // 返回请求路径
-  const url = APIMAP[key];
-  return url;
-  // eslint-disable-next-line semi
-};
+// 响应拦截
+ax.interceptors.response.use(
+  data => {
+    console.log('获取数据了')
+    return data
+  },
+  err => {
+    console.log('错误', err)
+  }
+)
 
-/***
- ** 暴露请求方法
- ***/
 export default {
-  get: (key, params) => {
-    const url = initApiConfig (key);
-    return _axios.get (url, {params});
+  get: (url, params) => {
+    return ax.get(url, { params })
   },
 
-  post: (key, data) => {
-    const url = initApiConfig (key, data);
-    return _axios.post (url, data);
+  put: (url, data) => {
+    return ax.put(url, data)
   },
 
-  put: (key, data) => {
-    const url = initApiConfig (key, data);
-    return _axios.put (url, data);
+  post: (url, data) => {
+    return ax.post(url, data)
   },
 
-  delete: (key, params) => {
-    const url = initApiConfig (key, params);
-    return _axios.delete (url, {params});
-  },
-
-  download: (key, params) => {
-    const url = initApiConfig (key, params);
-    return _axios ({
-      url,
-      params,
-      method: 'GET',
-      responseType: 'blob', // important
-    });
-  },
-};
+  delete: (url, params) => {
+    return ax.delete(url, { params })
+  }
+}

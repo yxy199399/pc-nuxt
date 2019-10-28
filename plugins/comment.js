@@ -2,10 +2,10 @@ import Vue from 'vue';
 import Utils from '../helper/Utils';
 import Session from '../helper/Session';
 import Filters from '../helper/Filters';
-import Axios from './axios/api';
+import ax from './axios/api';
 const comsys = {
   install (Vue) {
-    Vue.prototype.$axios = Axios;
+    Vue.prototype.$axios = ax;
     Vue.prototype.Utils = Utils;
     Vue.prototype.Session = Session;
   },
